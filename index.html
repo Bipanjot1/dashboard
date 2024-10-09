@@ -2,171 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team & Project Dashboard</title>
+    <title>Admin Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Johnsons & Johnsons</h1>
-        <nav>
-            <a href="index.html" class="active">Dashboard</a>
-            <a href="attendance.html">Attendance</a>
-        </nav>
-    </header>
+    <div id="login-page">
+        <h1>Admin Login</h1>
+        <div class="login-form">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+        </div>
+    </div>
 
-    <main>
-        <!-- Teams Overview -->
-        <section>
-            <h2>Teams Overview</h2>
-            <div class="teams-container">
-                <!-- Repeat this block for each team -->
-                <div class="team-card">
-                    <h3>Team Aspen</h3>
-                    <p><strong>Team Leader:</strong> Alisha Vashisht</p>
-                    <p><strong>Team Leads:</strong></p>
-                    <ul>
-                        <li>Lead 1: Bipan</li>
-                        <li>Lead 2: Diksha</li>
-                        <li>Lead 3: Anmol</li>
-                       
-                    </ul>
-                </div>
-
-                <div class="team-card">
-                    <h3>Team Maple</h3>
-                    <p><strong>Team Leader:</strong> Akshad</p>
-                    <p><strong>Team Leads:</strong></p>
-                    <ul>
-                        <li>Lead 1: Ananya</li>
-                        <li>Lead 2: Saksham</li>
-                        <li>Lead 3: Ajitesh</li>
-                     
-                    </ul>
-                </div>
-
-                <div class="team-card">
-                    <h3>Team Clover</h3>
-                    <p><strong>Team Leader:</strong> Ram</p>
-                    <p><strong>Team Leads:</strong></p>
-                    <ul>
-                        <li>Lead 1:Sham</li>
-                        <li>Lead 2:Ajitesh</li>
-                        <li>Lead 3:Saksham</li>
-                    </ul>
-                </div>
-
-                <div class="team-card">
-                    <h3>Team Sycamore</h3>
-                    <p><strong>Team Leader:</strong> Deepanshu</p>
-                    <p><strong>Team Leads:</strong></p>
-                    <ul>
-                        <li>Lead 1: Akhil</li>
-                        <li>Lead 2: Alisha</li>
-                        <li>Lead 3: Ananya</li>
-                    </ul>
-                </div>
+    <div id="dashboard" class="hidden">
+        <button id="logout-button" onclick="logout()">Logout</button>
+        <h1>Team Dashboard</h1>
+        <div id="teams">
+            <div class="team" onclick="showTeamData('team1')">
+                <h3>Team 1</h3>
+                <p>Leader: John Doe</p>
+                <p>Members: 5</p>
+                <p>Tasks Assigned: 10</p>
+                <p>Tasks Completed: 6</p>
+                <p>Ongoing Tasks: 4</p>
             </div>
-        </section>
+            <!-- Add other teams similarly... -->
 
-        <!-- Project Assignment Section -->
-        <section>
-            <h2>Project Assignments</h2>
-            <table>
+            <div class="team" onclick="showTeamData('team2')">
+                <h3>Team 2</h3>
+                <p>Leader: Jane Smith</p>
+                <p>Members: 4</p>
+                <p>Tasks Assigned: 8</p>
+                <p>Tasks Completed: 7</p>
+                <p>Ongoing Tasks: 1</p>
+            </div>
+            <div class="team" onclick="showTeamData('team3')">
+                <h3>Team 3</h3>
+                <p>Leader: Sarah Brown</p>
+                <p>Members: 6</p>
+                <p>Tasks Assigned: 12</p>
+                <p>Tasks Completed: 8</p>
+                <p>Ongoing Tasks: 4</p>
+            </div>
+            <div class="team" onclick="showTeamData('team4')">
+                <h3>Team 4</h3>
+                <p>Leader: Michael Johnson</p>
+                <p>Members: 7</p>
+                <p>Tasks Assigned: 15</p>
+                <p>Tasks Completed: 10</p>
+                <p>Ongoing Tasks: 5</p>
+            </div>
+        </div>
+
+        <div id="team-performance" class="hidden">
+            <canvas id="performanceChart"></canvas>
+        </div>
+
+        <div id="calendar" class="hidden">
+            <h3>Team Calendar (October 2024)</h3>
+            <table id="calendarTable">
                 <thead>
                     <tr>
-                        <th>Team</th>
-                        <th>Assigned Project</th>
-                        <th>Tasks Assigned</th>
-                        <th>Tasks Completed</th>
-                        <th>Ongoing Tasks</th>
+                        <th>Sunday</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Team Aspen</td>
-                        <td>Project Alpha</td>
-                        <td>50</td>
-                        <td>30</td>
-                        <td>20</td>
-                    </tr>
-                    <tr>
-                        <td>Team Maple</td>
-                        <td>Project Beta</td>
-                        <td>40</td>
-                        <td>25</td>
-                        <td>15</td>
-                    </tr>
-                    <tr>
-                        <td>Team Clover</td>
-                        <td>Project Gamma</td>
-                        <td>60</td>
-                        <td>45</td>
-                        <td>15</td>
-                    </tr>
-                    <tr>
-                        <td>Team Sycamore</td>
-                        <td>Project Delta</td>
-                        <td>55</td>
-                        <td>35</td>
-                        <td>20</td>
-                    </tr>
+                    <!-- Calendar data will be inserted here by JavaScript -->
                 </tbody>
             </table>
-        </section>
+            <div id="legend">
+               <span class="legend-item sick-leave"></span> Sick Leave
+               <span class="legend-item paid-leave"></span> Paid Leave
+               <span class="legend-item attended"></span> Attended
+               <span class="legend-item weekend"></span> Weekend (Off)
+            </div>
+        </div>
+    </div>
 
-        <!-- Performance Section -->
-        <section>
-            <h2>Performance Metrics</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Team</th>
-                        <th>Key Metrics</th>
-                        <th>Total Completed</th>
-                        <th>Efficiency (%)</th>
-                        <th>Notes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Team Aspen</td>
-                        <td>Task Completion Rate</td>
-                        <td>30</td>
-                        <td>60%</td>
-                        <td>On track</td>
-                    </tr>
-                    <tr>
-                        <td>Team Maple</td>
-                        <td>Task Completion Rate</td>
-                        <td>25</td>
-                        <td>62.5%</td>
-                        <td>Needs improvement</td>
-                    </tr>
-                    <tr>
-                        <td>Team Clover</td>
-                        <td>Task Completion Rate</td>
-                        <td>45</td>
-                        <td>75%</td>
-                        <td>Excellent performance</td>
-                    </tr>
-                    <tr>
-                        <td>Team Sycamore</td>
-                        <td>Task Completion Rate</td>
-                        <td>35</td>
-                        <td>63.6%</td>
-                        <td>Steady progress</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Johnsons & Johnsons. All rights reserved.</p>
-    </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
