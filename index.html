@@ -3,91 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #f06b6b, #f7f7f7); /* Adjust colors as desired */
+        }
+        .login-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 <body>
-    <div id="login-page">
-        <h1>Admin Login</h1>
-        <div class="login-form">
-            <input type="text" id="username" placeholder="Username">
-            <input type="password" id="password" placeholder="Password">
-            <button onclick="login()">Login</button>
-        </div>
-    </div>
-
-    <div id="dashboard" class="hidden">
-        <button id="logout-button" onclick="logout()">Logout</button>
-        <h1>Team Dashboard</h1>
-        <div id="teams">
-            <div class="team" onclick="showTeamData('team1')">
-                <h3>Team 1</h3>
-                <p>Leader: John Doe</p>
-                <p>Members: 5</p>
-                <p>Tasks Assigned: 10</p>
-                <p>Tasks Completed: 6</p>
-                <p>Ongoing Tasks: 4</p>
-            </div>
-            <!-- Add other teams similarly... -->
-
-            <div class="team" onclick="showTeamData('team2')">
-                <h3>Team 2</h3>
-                <p>Leader: Jane Smith</p>
-                <p>Members: 4</p>
-                <p>Tasks Assigned: 8</p>
-                <p>Tasks Completed: 7</p>
-                <p>Ongoing Tasks: 1</p>
-            </div>
-            <div class="team" onclick="showTeamData('team3')">
-                <h3>Team 3</h3>
-                <p>Leader: Sarah Brown</p>
-                <p>Members: 6</p>
-                <p>Tasks Assigned: 12</p>
-                <p>Tasks Completed: 8</p>
-                <p>Ongoing Tasks: 4</p>
-            </div>
-            <div class="team" onclick="showTeamData('team4')">
-                <h3>Team 4</h3>
-                <p>Leader: Michael Johnson</p>
-                <p>Members: 7</p>
-                <p>Tasks Assigned: 15</p>
-                <p>Tasks Completed: 10</p>
-                <p>Ongoing Tasks: 5</p>
-            </div>
-        </div>
-
-        <div id="team-performance" class="hidden">
-            <canvas id="performanceChart"></canvas>
-        </div>
-
-        <div id="calendar" class="hidden">
-            <h3>Team Calendar (October 2024)</h3>
-            <table id="calendarTable">
-                <thead>
-                    <tr>
-                        <th>Sunday</th>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
-                        <th>Saturday</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Calendar data will be inserted here by JavaScript -->
-                </tbody>
-            </table>
-            <div id="legend">
-               <span class="legend-item sick-leave"></span> Sick Leave
-               <span class="legend-item paid-leave"></span> Paid Leave
-               <span class="legend-item attended"></span> Attended
-               <span class="legend-item weekend"></span> Weekend (Off)
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow login-container">
+                    <div class="card-body">
+                        <h2 class="text-center">Login</h2>
+                        <form onsubmit="return validateLogin()">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="Username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            <p class="text-danger mt-2" id="error-message"></p>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function validateLogin() {
+            // Set the authorized username and password
+            const authorizedUsername = 'admin';
+            const authorizedPassword = 'password123';
+
+            // Get the input values
+            const enteredUsername = document.getElementById('username').value;
+            const enteredPassword = document.getElementById('password').value;
+
+            // Check if the entered credentials match the authorized ones
+            if (enteredUsername === authorizedUsername && enteredPassword === authorizedPassword) {
+                // Redirect to the index.html page
+                window.location.href = 'home.html';
+                return false; // Prevent form submission
+            } else {
+                // Show error message
+                document.getElementById('error-message').textContent = 'Invalid username or password.';
+                return false; // Prevent form submission
+            }
+        }
+    </script>
 </body>
 </html>
